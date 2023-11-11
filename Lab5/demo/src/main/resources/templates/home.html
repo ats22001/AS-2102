@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailPattern.test(username)) {
+          alert("Invalid email address");
+          return false;
+      }
+
+      if (password.length < 10) {
+          alert("Please have at least 10 characters in your password.");
+          return false;
+      }
+
+      var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).+$/;
+      if (!passwordPattern.test(password)) {
+          alert("Please use at least one uppercase letter, one digit, one lowercase letter and one special character in your password.");
+          return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+    </div>
+
+    <form
+    action="/proxy/8099/not_home"
+    method="post"
+    onsubmit="return validateForm();"
+    >
+    <label for="username">Enter your email addres to login:</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="youremail@youremail.com"
+      required
+    /><br>
+
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Enter your password here"
+      required
+    /><br>
+
+    <input type="submit" value="Log In" />
+  </form>
+</body>
+</html>
